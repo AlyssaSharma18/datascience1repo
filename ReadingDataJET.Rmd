@@ -110,10 +110,10 @@ Try it!
 
 ```
 
-Save your entire workspace to an `.Rdata` file using the following general code. If the data are being saved to a folder you need to specify the path to the folder.
+Save your entire workspace to an `.Rdata` file using the following general code. If the data are being saved to a folder you need to specify the path to the folder. It can be reloaded with the `load()` function.
 
 ```{r, savewkspc, eval = FALSE}
-save.image()
+save.image("myworkspace.RData")
 ```
 
     # syntax
