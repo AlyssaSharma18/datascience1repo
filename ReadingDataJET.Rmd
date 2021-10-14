@@ -1,0 +1,138 @@
+---
+title: "Reading & Writing Data in R"
+author: "YOUR NAME HERE"
+date: 'Last rendered on `r format(Sys.time(), "%A, %B %d, %Y @ %I:%M %p")`'
+output: 
+  html_document: 
+    theme: yeti
+    highlight: textmate
+    toc: true
+    toc_depth: 4
+---
+
+```{r globaloptions, include = FALSE}
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  comment = NA
+)
+```
+
+```{r}
+library(readxl)
+library(jsonlite)
+```
+
+## RDS and RDATA Files
+
+### Reading and Writing `.rds`
+
+Read an object from an `.rds` file using the following general code. You may need to specify a path name. You can also read data directly from a URL.
+
+```{r, readrds, eval = FALSE}
+readRDS(file = "my_data.rds")
+```
+
+    # syntax
+    readRDS(file, 
+      refhook = NULL)
+
+Try it!
+
+```{r}
+
+```
+
+Save a single object to an `.rds` file using the following general code. If the data are being saved to a folder you need to specify the path to the folder.
+
+```{r, saverds, eval = FALSE}
+saveRDS(objectname, file = "my_data.rds")
+```
+
+    # syntax
+    saveRDS(object, 
+      file = "", 
+      ascii = FALSE, 
+      version = NULL,
+      compress = TRUE, 
+      refhook = NULL)
+
+Try it!
+
+```{r}
+
+```
+
+### Reading and Writing `.Rdata`
+
+Load an `.Rdata` file using the following general code. You may need to specify a path name. You can also read data directly from a URL.
+
+```{r, loadrata, eval = FALSE}
+load("data.RData")
+```
+
+    # syntax
+    load(file, 
+    envir = parent.frame(), 
+    verbose = FALSE)
+
+Try it!
+
+```{r}
+
+```
+
+Save a one or more objects to an `.Rdata` file using the following general code. If the data are being saved to a folder you need to specify the path to the folder.
+
+```{r, saverdata1, eval = FALSE}
+save(objectname, file = "data.RData")
+```
+
+```{r, saverdata2, eval = FALSE}
+save(objectname1, objectname2, file = "data.RData")
+```
+
+    # syntax
+    save(..., 
+      list = character(),
+      file = stop("'file' must be specified"),
+      ascii = FALSE, 
+      version = NULL, 
+      envir = parent.frame(),
+      compress = isTRUE(!ascii), 
+      compression_level,
+      eval.promises = TRUE, 
+      precheck = TRUE)
+
+Try it!
+
+```{r}
+
+```
+
+Save your entire workspace to an `.Rdata` file using the following general code. If the data are being saved to a folder you need to specify the path to the folder.
+
+```{r, savewkspc, eval = FALSE}
+save.image()
+```
+
+    # syntax
+    save.image(file = ".RData", 
+      version = NULL, 
+      ascii = FALSE,
+      compress = !ascii, 
+      safe = TRUE)
+
+Try it!
+
+```{r}
+
+```
+
+## Excel Files
+
+TBA
+
+## JSON Files
+
+TBA
