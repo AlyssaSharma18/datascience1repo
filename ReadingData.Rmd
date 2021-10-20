@@ -131,53 +131,8 @@ Try it!
 
 ## Excel Files
 
-How many sheets are in the `powerball.xlsx` file? 
-
-```{r}
-excel_sheets("data/powerball.xlsx")
-```
-
-    # syntax 
-    excel_sheets(path)
-
-What file format is it?
-
-```{r}
-excel_format("data/powerball.xlsx")
-```
-
-    # syntax
-    excel_format(path, guess = TRUE)
-
-Read all the sheets into R.
-
-```{r}
-# read using sheet number
-powerballtest <- read_excel("data/powerball.xlsx", sheet = 1)
-jackpot <- read_excel("data/powerball.xlsx", sheet = 2)
-numballs <- read_excel("data/powerball.xlsx", sheet = 3)
-
-# read using sheet name
-inflation <- read_excel("data/powerball.xlsx", sheet = "Inflation")
-```
-
-    # syntax
-    read_excel(path, 
-    sheet = NULL, 
-    range = NULL, 
-    col_names = TRUE,
-    col_types = NULL, 
-    na = "", 
-    trim_ws = TRUE, 
-    skip = 0,
-    n_max = Inf, 
-    guess_max = min(1000, n_max),
-    progress = readxl_progress(), 
-    .name_repair = "unique")
+TBA
 
 ## JSON Files
 
-```{r}
-hadleyorgs <- fromJSON("https://api.github.com/users/hadley/orgs")
-testDB <- fromJSON("data/mockaroo.json")
-```
+TBA
