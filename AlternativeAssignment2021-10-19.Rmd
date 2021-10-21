@@ -1,0 +1,144 @@
+---
+title: "Alternative Assignment"
+author: "Dr. Thomley's Solutions"
+date: 'Last rendered on `r format(Sys.time(), "%A, %B %d, %Y @ %I:%M %p")`'
+output: 
+  html_document: 
+    theme: yeti
+    highlight: textmate
+    toc: true
+    toc_depth: 4
+---
+
+```{r globaloptions, include = FALSE}
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  comment = NA
+)
+```
+
+```{r}
+library(tidyverse)
+library(readxl)
+library(writexl)
+library(jsonlite)
+```
+
+## Excel File
+
+How many sheets are in the workbook?
+
+```{r}
+excel_sheets("data/UCR20162017.xls")
+```
+
+What format is the workbook?
+
+```{r}
+excel_format("data/UCR20162017.xls")
+```
+
+Read the first sheet into R.
+
+Example 1: Using `skip` and `n_max` options
+
+```{r}
+crime1 <- read_excel("data/UCR20162017.xls", 
+                     sheet = 1, 
+                     skip = 4, 
+                     n_max = 20,
+                     col_names = c("year",
+                                   "pop",
+                                   "violent",
+                                   "violent_rate",
+                                   "murder",
+                                   "murder_rate",
+                                   "rape_rev",
+                                   "rape_rev_rate",
+                                   "rape_leg",
+                                   "rape_leg_rate",
+                                   "robbery",
+                                   "robbery_rate",
+                                   "assault",
+                                   "assault_rate",
+                                   "prop_crime",
+                                   "prop_crime_rate",
+                                   "burglary",
+                                   "burglary_rate",
+                                   "larceny",
+                                   "larceny_rate",
+                                   "veh_theft",
+                                   "veh_theft_rate"))
+glimpse(crime1)
+```
+
+Example 2: Using `range` option
+
+```{r}
+crime2 <- read_excel("data/UCR20162017.xls", 
+                     sheet = 1, 
+                     range = "A5:V24", 
+                     col_names = c("year",
+                                   "pop",
+                                   "violent",
+                                   "violent_rate",
+                                   "murder",
+                                   "murder_rate",
+                                   "rape_rev",
+                                   "rape_rev_rate",
+                                   "rape_leg",
+                                   "rape_leg_rate",
+                                   "robbery",
+                                   "robbery_rate",
+                                   "assault",
+                                   "assault_rate",
+                                   "prop_crime",
+                                   "prop_crime_rate",
+                                   "burglary",
+                                   "burglary_rate",
+                                   "larceny",
+                                   "larceny_rate",
+                                   "veh_theft",
+                                   "veh_theft_rate"))
+glimpse(crime2)
+```
+
+Compare the Methods
+
+```{r}
+identical(crime1, crime2)
+```
+
+Write the file to `xlsx` format
+
+```{r}
+write_xlsx(crime1, "data/crimedata.xlsx")
+```
+
+## JSON File
+
+Example 1: Two Steps
+
+```{r}
+personnel1 <- fromJSON("data/personnel.json")
+glimpse(personnel1)
+personnel2 <- as_tibble(personnel1)
+glimpse(personnel2)
+```
+
+Example 2: One Step
+
+```{r}
+personnel <- as_tibble(fromJSON("data/personnel.json"))
+```
+
+Compare the Methods
+
+```{r}
+identical(personnel, personnel2)
+```
+
+```{r}
+sessionInfo()
+```
